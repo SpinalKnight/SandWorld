@@ -7,6 +7,8 @@ public class Respawn : MonoBehaviour
 {
     public Transform PlayerPos;
 
+    public bool zoomOut;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -19,6 +21,15 @@ public class Respawn : MonoBehaviour
         if (transform.position.y <= -10)
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        
+        if (other.gameObject.CompareTag("End"))
+        {
+            zoomOut = true;
         }
     }
 }

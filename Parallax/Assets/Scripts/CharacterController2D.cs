@@ -11,7 +11,8 @@ public class CharacterController2D : MonoBehaviour
 	[SerializeField] private LayerMask m_WhatIsGround;                          
 	[SerializeField] private Transform m_GroundCheck;                           
 	[SerializeField] private Transform m_CeilingCheck;                          
-	[SerializeField] private Collider2D m_CrouchDisableCollider;                
+	[SerializeField] private Collider2D m_CrouchDisableCollider;
+	[SerializeField] private float movementSpeed;
 
 	const float k_GroundedRadius = .6f;
 	private bool m_Grounded;           
@@ -98,7 +99,7 @@ public class CharacterController2D : MonoBehaviour
 				}
 			}
 
-			Vector3 targetVelocity = new Vector2(move * 10f, m_Rigidbody2D.velocity.y);
+			Vector3 targetVelocity = new Vector2(move * movementSpeed, m_Rigidbody2D.velocity.y);
 			m_Rigidbody2D.velocity = Vector3.SmoothDamp(m_Rigidbody2D.velocity, targetVelocity, ref m_Velocity, m_MovementSmoothing);
 
 			if (move > 0 && !m_FacingRight)
